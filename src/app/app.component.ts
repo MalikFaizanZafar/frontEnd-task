@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {WeatherService} from './services/weather.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  constructor(public weatherService : WeatherService){
+    weatherService.getWeatherInfo().subscribe(result=>{
+      console.log("Working");
+      console.log(result);
+    },err=>{
+      console.log("Not Working");
+      console.log(err);
+    });
+  }
 }
